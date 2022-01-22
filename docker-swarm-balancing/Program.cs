@@ -2,6 +2,8 @@ using docker_swarm_balancing;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors();
+
 builder.Host.ConfigureLogging(logBuilder =>
 {
     logBuilder.ClearProviders();
@@ -22,4 +24,10 @@ app.MapGet("/", async context =>
     await context.Response.WriteAsJsonAsync(result);
 });
 app.UseMiddleware<HandleResponseMiddleware>();
+app.UseCors(option =>
+{
+    option.AllowAnyHeader();
+    option.AllowAnyMethod();
+    option.AllowAnyOrigin();
+});
 app.Run();
