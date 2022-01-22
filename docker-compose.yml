@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  docker-swarm-balancing:
+    image: ${DOCKER_REGISTRY-}dockerswarmbalancing
+    build:
+      context: .
+      dockerfile: docker-swarm-balancing/Dockerfile
+    
