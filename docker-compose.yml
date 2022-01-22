@@ -6,4 +6,6 @@ services:
     build:
       context: .
       dockerfile: docker-swarm-balancing/Dockerfile
-    
+    ports:
+      - "80:80"
+
