@@ -22,4 +22,10 @@ app.MapGet("/", async context =>
     await context.Response.WriteAsJsonAsync(result);
 });
 app.UseMiddleware<HandleResponseMiddleware>();
+app.UseCors(option =>
+{
+    option.AllowAnyHeader();
+    option.AllowAnyMethod();
+    option.AllowAnyOrigin();
+});
 app.Run();
