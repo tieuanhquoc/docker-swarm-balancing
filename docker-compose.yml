@@ -3,7 +3,10 @@ version: '3.4'
 services:
   docker-swarm-balancing:
     image: ${DOCKER_REGISTRY-}dockerswarmbalancing
+    restart: always
     build:
       context: .
       dockerfile: docker-swarm-balancing/Dockerfile
-    
+    ports:
+      - "80:80"
+
